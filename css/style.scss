@@ -42,9 +42,13 @@ section {
 }
 
 .container {
-    width: 85%;
+    width: 100%;
     max-width: 65em;
     margin: 0 auto;
+
+    @media (min-width: 768px) {
+        width: 100%;
+    }
 }
 
 .split {
