@@ -1,0 +1,327 @@
+:root {
+    --clr-inner: red;
+    --clr-out: yellow;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: 'Nato Sans Jp', sans-serif;
+    line-height: 1.6;
+    padding: 0 1rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+.spacing>*+* {
+    margin-top: var(--spacer, 2rem);
+}
+
+section {
+    padding: 17em 0 7em 0;
+}
+
+.container {
+    width: 85%;
+    max-width: 65em;
+    margin: 0 auto;
+}
+
+.split {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+
+    &>* {
+        flex-basis: 30%;
+        min-width: 15em
+    }
+}
+
+.btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: .5em 1.25em;
+    color: var(--clr-text, #fff);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.125em;
+    border-radius: .25em;
+    background: var(--clr-content, #e84393);
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+}
+
+.btn:hover,
+.btn:focus {
+    transform: scale(1.1);
+    opacity: .9;
+}
+
+.primary-title {
+    font-size: clamp(3rem, calc(5vw + 1rem), 5rem);
+    line-height: 1;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2.5rem, calc(5vw + 1rem), 3.5rem);
+    line-height: 1;
+    color: #17353d;
+    margin-bottom: 1.5em;
+    text-transform: capitalize;
+}
+
+.hero {
+    text-align: center;
+    color: #fff;
+    padding: 15em 0;
+    background-color: #222;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+    position: relative;
+    z-index: 200;
+
+
+    .logo {
+        display: flex;
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        // gap: 1rem;
+        align-items: center;
+
+        &__image {
+            width: 8rem;
+        }
+
+        &__text {
+            color: #e84393;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 2rem;
+        }
+    }
+
+    @supports (background-blend-mode: multiply) {
+        background: url(../img/shoe-3.png),
+            radial-gradient(#444, #111);
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+}
+
+.featured {
+    background: #e84393;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+    margin-top: -10em;
+    overflow: hidden;
+
+
+    &__item {
+        display: block;
+        transform: scale(.9);
+        position: relative;
+        transition: all .1s linear;
+        text-decoration: none;
+        color: #333;
+        text-align: center;
+
+
+
+        &:hover,
+        &:focus {
+            transform: scale(1);
+
+            .featured__details {
+                opacity: 1;
+                text-shadow: 0 0 2em #fff;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            background: #3498db;
+            padding-top: 75%;
+            padding-left: 75%;
+            border-radius: 50%;
+            top: 3%;
+            left: 10%;
+            z-index: -1;
+
+        }
+
+        &:nth-child(2)::after {
+            background: #2ecc71;
+        }
+
+        &:nth-child(3)::after {
+            background: #111;
+        }
+
+        &:nth-child(4)::after {
+            background: #1abc9c;
+        }
+
+        &:nth-child(5)::after {
+            background: #2c3e50;
+        }
+
+        &:nth-child(6)::after {
+            background: #e67e22;
+        }
+    }
+
+    &__details {
+        opacity: 0;
+        transition: all .145s linear;
+
+
+        span {
+            display: block;
+            font-weight: 900;
+            font-size: 3rem;
+        }
+    }
+}
+
+.our-products {
+    background: #1e272e;
+    margin-top: -10em;
+
+
+
+
+    .title-light {
+        color: #fff;
+    }
+
+    .product {
+        color: #ddd;
+        padding: 3em;
+        margin-bottom: 5em;
+        text-align: center;
+
+        &__image {
+            margin: -6em 0 0 0;
+            transition: all .2s linear;
+
+            &:hover {
+                transform: scale(1.1);
+                cursor: pointer;
+            }
+        }
+
+        &__title {
+            font-size: clamp(2rem, calc(5vw + 1rem), 4rem);
+            text-transform: capitalize;
+            line-height: 1.1;
+            // text-shadow: 0 5px 1rem  rgba(255,255,255,.8);
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 45em) {
+            margin-bottom: 14em;
+            text-align: left;
+
+
+
+            &__title {
+                margin: 0;
+            }
+
+            &__image {
+                float: right;
+                width: 60%;
+                shape-outside: url(../img/shoe-1.png);
+                shape-margin: 1em;
+                margin: 0 -5em 0 0;
+            }
+
+            &.shoe-left {
+
+                text-align: right;
+
+                .product__image {
+                    float: left;
+                    shape-outside: url(../img/shoe-2.png);
+                    margin: 0 0 0 -5em;
+                    shape-margin: 2em;
+                }
+            }
+
+        }
+
+    }
+
+    .shoe-red {
+        border-right: 10px solid #e84393;
+        // border-bottom: 1px solid #777;
+    }
+
+    .shoe-white {
+        // border-bottom: 1px solid #777;
+        border-left: 10px solid#e84393;
+    }
+
+    .shoe-blue {
+        border-right: 10px solid#e84393;
+        // border-bottom: 1px solid #777;
+    }
+}
+
+.footer {
+    text-align: center;
+    display: grid;
+    place-items: center;
+    padding: 5rem 0 1rem 0;
+    background-color: #222;
+    color: #eee;
+
+    &__logo{
+
+        display: flex;
+        margin-bottom: 2rem;
+        align-items: center;
+        // gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+
+
+        span{
+            font-size: clamp(2rem, calc(5vw + 1rem), 3rem);
+            text-transform: uppercase;
+            font-weight: 900;
+            color: #E74393;
+        }
+
+        &-image{
+            width: 8rem
+        }
+    }
+}
