@@ -13,7 +13,12 @@ body {
   margin: 0;
   font-family: 'Nato Sans Jp', sans-serif;
   line-height: 1.6;
-  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 0 1rem;
+  }
 }
 
 img {
@@ -40,9 +45,15 @@ section {
 }
 
 .container {
-  width: 85%;
+  width: 100%;
   max-width: 65em;
   margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 100%;
+  }
 }
 
 .split {
